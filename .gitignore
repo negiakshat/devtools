@@ -1,0 +1,38 @@
+# Dependencies and package-manager cache
+node_modules/
+.pnpm-store/
+
+# Generated application output and local build metadata
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# Local environment configuration
+.env
+.env.*
+!.env.example
+
+# Logs, test output, and temporary work
+*.log
+logs/
+coverage/
+.nyc_output/
+tmp/
+temp/
+*.tgz
+
+# Local IDE and operating-system metadata
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Manus and managed-workbench runtime artifacts
+.manus-logs/
+.webdev/
+.project-config.json
+client/public/__manus__/version.json

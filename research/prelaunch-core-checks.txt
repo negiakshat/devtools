@@ -1,0 +1,291 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+--- VITEST ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /home/ubuntu/devtools/client
+
+ ✓ src/lib/transforms.test.ts (10 tests) 48ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  18:21:54
+   Duration  357ms (transform 72ms, setup 0ms, collect 70ms, tests 48ms, environment 0ms, prepare 67ms)
+
+
+--- PRODUCTION BUILD ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> devtools@1.0.0 build /home/ubuntu/devtools
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v7.1.9 building for production...
+transforming...
+✓ 1709 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/public/index.html                       370.36 kB │ gzip: 106.40 kB
+../dist/public/assets/index-Ys4SdH8p.css        168.41 kB │ gzip:  30.14 kB
+../dist/public/assets/icons-3ExQEtYC.js          16.77 kB │ gzip:   3.46 kB
+../dist/public/assets/ToolRoute-RlxIlWfb.js     117.56 kB │ gzip:  23.68 kB
+../dist/public/assets/index-WUlysR_x.js         213.43 kB │ gzip:  57.25 kB
+../dist/public/assets/react-vendor-D3mBqfD7.js  408.78 kB │ gzip: 123.18 kB
+../dist/public/assets/editor-Cvl-ycbn.js        524.58 kB │ gzip: 178.13 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 5.11s
+
+  dist/index.js  788b 
+
+⚡ Done in 3ms
+
+--- DEPENDENCY AUDIT ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ path-to-regexp vulnerable to Regular Expression Denial │
+│                     │ of Service via multiple route parameters               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ path-to-regexp                                         │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ <0.1.13                                                │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=0.1.13                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > express@4.21.2 > path-to-regexp@0.1.12             │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-37ch-88jc-xwx2      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ lodash vulnerable to Code Injection via `_.template`   │
+│                     │ imports key names                                      │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ lodash-es                                              │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=4.0.0 <=4.17.23                                      │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=4.18.0                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > streamdown@1.4.0 > mermaid@11.12.0 >               │
+│                     │ @mermaid-js/parser@0.6.3 > langium@3.3.1 >             │
+│                     │ chevrotain@11.0.3 > @chevrotain/cst-dts-gen@11.0.3 >   │
+│                     │ @chevrotain/gast@11.0.3 > lodash-es@4.17.21            │
+│                     │                                                        │
+│                     │ . > streamdown@1.4.0 > mermaid@11.12.0 >               │
+│                     │ @mermaid-js/parser@0.6.3 > langium@3.3.1 >             │
+│                     │ chevrotain@11.0.3 > @chevrotain/cst-dts-gen@11.0.3 >   │
+│                     │ lodash-es@4.17.21                                      │
+│                     │                                                        │
+│                     │ . > streamdown@1.4.0 > mermaid@11.12.0 >               │
+│                     │ @mermaid-js/parser@0.6.3 > langium@3.3.1 >             │
+│                     │ chevrotain@11.0.3 > @chevrotain/gast@11.0.3 >          │
+│                     │ lodash-es@4.17.21                                      │
+│                     │                                                        │
+│                     │ ... Found 11 paths, run `pnpm why lodash-es` for more  │
+│                     │ information                                            │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-r5fr-rjxr-66jc      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ lodash vulnerable to Code Injection via `_.template`   │
+│                     │ imports key names                                      │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ lodash                                                 │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=4.0.0 <=4.17.23                                      │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=4.18.0                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > recharts@2.15.4 > lodash@4.17.21                   │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-r5fr-rjxr-66jc      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios: Incomplete Fix for CVE-2025-62718 — NO_PROXY    │
+│                     │ Protection Bypassed via RFC 1122 Loopback Subnet       │
+│                     │ (127.0.0.0/8) in Axios 1.15.0                          │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.15.1                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.15.1                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-pmwg-cvhr-8vh7      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios: Prototype Pollution Gadgets - Response          │
+│                     │ Tampering, Data Exfiltration, and Request Hijacking    │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.15.1                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.15.1                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-pf86-5x62-jrwf      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios: Header Injection via Prototype Pollution        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.15.1                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.15.1                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-6chq-wfr3-2hj9      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios is Vulnerable to Denial of Service via __proto__ │
+│                     │ Key in mergeConfig                                     │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <=1.13.4                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.13.5                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-43fc-jf86-j433      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios has prototype pollution read-side gadgets in     │
+│                     │ HTTP adapter that allow credential injection and       │
+│                     │ request hijacking                                      │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.15.2                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.15.2                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-q8qp-cvcw-x6jj      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios: Regular Expression Denial of Service (ReDoS)    │
+│                     │ via Cookie Name Injection                              │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.16.0                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.16.0                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-hfxv-24rg-xrqf      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Allocation of Resources Without Limits or Throttling   │
+│                     │ in Axios                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.7.0 <1.16.0                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.16.0                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-777c-7fjr-54vf      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios: Proxy-Authorization Credential Leak to Origin   │
+│                     │ Server Across HTTP-to-HTTPS Redirect in Axios Node.js  │
+│                     │ HTTP Adapter                                           │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.16.0                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.16.0                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-p92q-9vqr-4j8v      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ Axios: Proxy-Authorization header leaks to redirect    │
+│                     │ target when proxy is re-evaluated to direct connection │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.16.0                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.16.0                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-j5f8-grm9-p9fc      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ axios Vulnerable to Credential Theft and Response      │
+│                     │ Hijacking via Prototype Pollution Gadget in Config     │
+│                     │ Merge                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.15.2                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.15.2                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-3g43-6gmg-66jw      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ axios Vulnerable to Full Man-in-the-Middle via         │
+│                     │ Prototype Pollution Gadget in `config.proxy`           │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ axios                                                  │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=1.0.0 <1.16.0                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=1.16.0                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-35jp-ww65-95wh      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ form-data: CRLF injection in form-data via unescaped   │
+│                     │ multipart field names and filenames                    │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ form-data                                              │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=4.0.0 <4.0.6                                         │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=4.0.6                                                │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > axios@1.12.2 > form-data@4.0.4                     │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-hmw2-7cc7-3qxx      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ nanoid: non-secure generators can loop indefinitely    │
+│                     │ with negative size                                     │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ nanoid                                                 │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=4.0.0 <5.1.16                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=5.1.16                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > nanoid@5.1.6                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-28wg-ghj8-5hjv      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+71 vulnerabilities found
+Severity: 8 low | 47 moderate | 16 high

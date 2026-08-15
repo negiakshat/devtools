@@ -1,0 +1,62 @@
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+--- VITEST ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+ RUN  v2.1.9 /home/ubuntu/devtools/client
+
+ ✓ src/lib/transforms.test.ts (10 tests) 30ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  18:24:12
+   Duration  342ms (transform 80ms, setup 0ms, collect 77ms, tests 30ms, environment 0ms, prepare 62ms)
+
+
+--- BUILD ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+
+> devtools@1.0.0 build /home/ubuntu/devtools
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v7.1.9 building for production...
+transforming...
+✓ 1709 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/public/index.html                       370.36 kB │ gzip: 106.41 kB
+../dist/public/assets/index-Vrp5gq5Y.css        165.27 kB │ gzip:  29.69 kB
+../dist/public/assets/icons-3ExQEtYC.js          16.77 kB │ gzip:   3.46 kB
+../dist/public/assets/ToolRoute-BOD5zbE8.js     117.56 kB │ gzip:  23.69 kB
+../dist/public/assets/index-D8I55BE8.js         213.43 kB │ gzip:  57.25 kB
+../dist/public/assets/react-vendor-D3mBqfD7.js  408.78 kB │ gzip: 123.18 kB
+../dist/public/assets/editor-Cvl-ycbn.js        524.58 kB │ gzip: 178.13 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 5.21s
+
+  dist/index.js  788b 
+
+⚡ Done in 3ms
+
+--- AUDIT ---
+[WARN] The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.patchedDependencies", "pnpm.overrides". See https://pnpm.io/settings for the new home of each setting.
+┌─────────────────────┬────────────────────────────────────────────────────────┐
+│ high                │ nanoid: non-secure generators can loop indefinitely    │
+│                     │ with negative size                                     │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Package             │ nanoid                                                 │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Vulnerable versions │ >=4.0.0 <5.1.16                                        │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Patched versions    │ >=5.1.16                                               │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ Paths               │ . > nanoid@5.1.6                                       │
+├─────────────────────┼────────────────────────────────────────────────────────┤
+│ More info           │ https://github.com/advisories/GHSA-28wg-ghj8-5hjv      │
+└─────────────────────┴────────────────────────────────────────────────────────┘
+1 vulnerabilities found
+Severity: 1 high
