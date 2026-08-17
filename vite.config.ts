@@ -1,5 +1,5 @@
-import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
@@ -205,10 +205,21 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
-
-export default defineConfig({
-  plugins,
+export default defineConfig(({ mode }) => {
+  const useCloudflareWorker = process.env.CLOUDFLARE_WORKERS === "true";
+  return {
+  // Keep this as a literal array so Cloudflare's Vite integration and migration
+  // tooling can detect the configured plugin chain.
+  plugins: [
+    react(),
+    tailwindcss(),
+    vitePluginManusRuntime(),
+    vitePluginManusDebugCollector(),
+    vitePluginStorageProxy(),
+    ...(useCloudflareWorker && mode !== "test" && process.env.VITEST !== "true"
+      ? [cloudflare({ configPath: "../wrangler.jsonc" })]
+      : []),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -255,4 +266,5 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
+  };
 });
