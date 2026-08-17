@@ -78,10 +78,12 @@ function vitePluginManusDebugCollector(): Plugin {
   return {
     name: "manus-debug-collector",
 
+    // Diagnostics are only for the local development server. Keeping this
+    // plugin out of builds prevents it from injecting browser-input logging
+    // into the public application.
+    apply: "serve",
+
     transformIndexHtml(html) {
-      if (process.env.NODE_ENV === "production") {
-        return html;
-      }
       return {
         html,
         tags: [
