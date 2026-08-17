@@ -4,11 +4,9 @@ import { Link } from "wouter";
 import AppShell from "@/components/AppShell";
 import DocumentHead from "@/components/DocumentHead";
 import AdSlot from "@/components/AdSlot";
-import ProjectExplorer from "@/components/ProjectExplorer";
 import { categories, tools } from "@/lib/toolRegistry";
 import { trackEvent } from "@/lib/analytics";
-
-// Precision Console home: the explorer is a truthful, local workspace map—not a simulated project manager or filesystem editor.
+// Precision Console home: public visitors receive utility context, not internal project structure.
 export default function Home() {
   const toolCount = String(tools.length).padStart(2, "0");
   return (
@@ -34,8 +32,6 @@ export default function Home() {
             <footer><span>{toolCount} TOOLS AVAILABLE · SESSION: LOCAL</span><Link href="/json-formatter">OPEN WORKBENCH <ArrowRight size={13} /></Link></footer>
           </section>
         </section>
-
-        <ProjectExplorer />
 
         <section className="tool-directory" id="tools" aria-labelledby="tool-directory-title">
           <div className="directory-header"><div><p className="eyebrow">Utility inventory / {toolCount} online</p><h2 id="tool-directory-title">Choose a workbench.</h2></div><p>Every tool is an independent local utility. Open one, paste data, run the command, and copy or download the result.</p></div>
