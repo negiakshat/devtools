@@ -176,10 +176,10 @@
 
 # Attached Netlify Production Execution Brief
 
-- [ ] Execute the attached live Netlify production checks and apply only the safe corrections explicitly authorized by the brief.
-- [ ] Verify all public routes, refresh behavior, crawler assets, sitemap membership, and unknown-route 404 responses against the live Netlify URL.
+- [x] Execute the attached live Netlify production checks and apply only the safe corrections explicitly authorized by the brief.
+- [x] Verify all public routes, refresh behavior, crawler assets, sitemap membership, and unknown-route 404 responses against the live Netlify URL.
 - [x] Audit initial HTML for route-specific titles, descriptions, canonicals, language, meaningful H1 content, and truthful JSON-LD.
 - [x] Exercise every browser-local tool plus core desktop/mobile interactions on the live production site and check console/network behavior.
 - [x] Inspect HTTPS, mixed-content, route duplication, client-bundle exposure, and production build/test status.
-- [ ] Apply and push only confirmed indexing-readiness fixes, then re-verify the live Netlify release.
+- [x] Apply and push only confirmed indexing-readiness fixes, then re-verify the live Netlify release.
 - [x] Align static canonical, sitemap, Open Graph, Twitter, and JSON-LD URLs with Netlify’s trailing-slash directory URLs so sitemap entries return HTTP 200 without redirects.
