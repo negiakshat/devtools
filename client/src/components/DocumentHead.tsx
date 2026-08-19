@@ -9,6 +9,8 @@ export type PageMetadata = {
   robots?: "index, follow" | "noindex, nofollow";
 };
 
+const CANONICAL_ORIGIN = "https://devtools.work.gd";
+
 function upsertMeta(attribute: "name" | "property", key: string, content: string) {
   let element = document.head.querySelector(`meta[${attribute}="${key}"]`) as HTMLMetaElement | null;
   if (!element) {
@@ -37,7 +39,8 @@ export default function DocumentHead({ tool, page }: { tool?: ToolDefinition; pa
     const description = tool ? tool.seoDescription : page?.description ?? "Fast, free browser utilities for formatting, validating, converting, and debugging developer data.";
     const path = tool ? `/${tool.slug}` : page?.path ?? "/";
     const robots = page?.robots ?? "index, follow";
-    const canonicalUrl = `${window.location.origin}${path}`;
+    const canonicalUrl = new URL(path, CANONICAL_ORIGIN).toString();
+    const siteUrl = new URL("/", CANONICAL_ORIGIN).toString();
     document.title = title;
     upsertMeta("name", "description", description);
     upsertMeta("property", "og:title", title);
@@ -64,14 +67,14 @@ export default function DocumentHead({ tool, page }: { tool?: ToolDefinition; pa
       operatingSystem: "Any",
       url: canonicalUrl,
       isAccessibleForFree: true,
-      isPartOf: { "@type": "WebSite", name: "Developer Tools", url: window.location.origin },
+      isPartOf: { "@type": "WebSite", name: "Developer Tools", url: siteUrl },
     } : page ? {
       "@context": "https://schema.org",
       "@type": page.type ?? "WebPage",
       name: title,
       description,
       url: canonicalUrl,
-      isPartOf: { "@type": "WebSite", name: "Developer Tools", url: window.location.origin },
+      isPartOf: { "@type": "WebSite", name: "Developer Tools", url: siteUrl },
     } : {
       "@context": "https://schema.org",
       "@type": "WebSite",

@@ -208,7 +208,8 @@ function vitePluginStorageProxy(): Plugin {
 export default defineConfig(({ mode }) => {
   const useCloudflareWorker = process.env.CLOUDFLARE_WORKERS === "true";
   return {
-  // Keep this as a literal array so Cloudflare's Vite integration and migration
+    base: process.env.VITE_BASE_PATH || "/",
+    // Keep this as a literal array so Cloudflare's Vite integration and migration
   // tooling can detect the configured plugin chain.
   plugins: [
     react(),

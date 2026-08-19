@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "start": "NODE_ENV=production node dist/index.js",
+    "build": "pnpm run build:static",
+    "build:static": "vite build && tsx scripts/prerender-static.ts",
     "preview": "vite preview --host",
     "cf:dev": "CLOUDFLARE_WORKERS=true vite dev",
     "cf:build": "CLOUDFLARE_WORKERS=true vite build",

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devtools-gfrrrosv.manus.space/sitemap.xml
+Sitemap: https://devtools.work.gd/sitemap.xml

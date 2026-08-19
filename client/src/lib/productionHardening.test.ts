@@ -15,7 +15,7 @@ describe("production hardening", () => {
   });
 
   it("uses the configured production hostname in crawler assets", () => {
-    const expectedHost = "https://devtools-gfrrrosv.manus.space";
+    const expectedHost = "https://devtools.work.gd";
     const robots = readProjectFile("client/public/robots.txt");
     const sitemap = readProjectFile("client/public/sitemap.xml");
 

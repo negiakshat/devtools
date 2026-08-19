@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { useWorkspacePreferences, WorkspacePreferencesProvider } from "./contexts/WorkspacePreferences";
 import Home from "./pages/Home";
@@ -16,7 +16,8 @@ function RouteLoader() {
 }
 
 function Router() {
-  return (
+  const base = import.meta.env.BASE_URL === "/" ? undefined : import.meta.env.BASE_URL.replace(/\/$/, "");
+  return <WouterRouter base={base}>
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/privacy"><TrustPage page="privacy" /></Route>
@@ -25,7 +26,7 @@ function Router() {
       <Route path="/:slug">{(params) => <Suspense fallback={<RouteLoader />}><ToolRoute slug={params.slug} /></Suspense>}</Route>
       <Route component={NotFound} />
     </Switch>
-  );
+  </WouterRouter>;
 }
 
 function App() {
