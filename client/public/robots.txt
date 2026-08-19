@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devtools.work.gd/sitemap.xml
+Sitemap: https://negiakshat.github.io/devtools/sitemap.xml

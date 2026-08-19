@@ -154,3 +154,8 @@
 - [x] Revalidate remote repository visibility and write authorization after the user-confirmed access update.
 - [x] Retry the confirmed `https://github.com/negiakshat/devtools.git` remote authorization and push path.
 - [x] Validate the refreshed GitHub session can access and write to the confirmed private repository.
+
+# GitHub Pages Static Domain Retirement Checklist
+
+- [x] Remove the retired custom-domain string from static canonical metadata, crawler assets, and their regression coverage while preserving the `/devtools` GitHub Pages subpath.
+- [x] Validate the static build, type check, and regression suite before pushing the cleanup to GitHub main.

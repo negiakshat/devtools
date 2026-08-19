@@ -9,7 +9,16 @@ export type PageMetadata = {
   robots?: "index, follow" | "noindex, nofollow";
 };
 
-const CANONICAL_ORIGIN = "https://devtools.work.gd";
+const CANONICAL_ORIGIN = "https://negiakshat.github.io/devtools";
+
+function canonicalUrlForPath(path: string) {
+  const url = new URL(CANONICAL_ORIGIN);
+  const basePath = url.pathname.replace(/\/+$/, "");
+  const routePath = path.replace(/^\/+/, "");
+
+  url.pathname = routePath ? `${basePath}/${routePath}` : `${basePath || ""}/`;
+  return url.toString();
+}
 
 function upsertMeta(attribute: "name" | "property", key: string, content: string) {
   let element = document.head.querySelector(`meta[${attribute}="${key}"]`) as HTMLMetaElement | null;
@@ -39,8 +48,8 @@ export default function DocumentHead({ tool, page }: { tool?: ToolDefinition; pa
     const description = tool ? tool.seoDescription : page?.description ?? "Fast, free browser utilities for formatting, validating, converting, and debugging developer data.";
     const path = tool ? `/${tool.slug}` : page?.path ?? "/";
     const robots = page?.robots ?? "index, follow";
-    const canonicalUrl = new URL(path, CANONICAL_ORIGIN).toString();
-    const siteUrl = new URL("/", CANONICAL_ORIGIN).toString();
+    const canonicalUrl = canonicalUrlForPath(path);
+    const siteUrl = canonicalUrlForPath("/");
     document.title = title;
     upsertMeta("name", "description", description);
     upsertMeta("property", "og:title", title);

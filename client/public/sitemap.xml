@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://devtools.work.gd/</loc></url>
-  <url><loc>https://devtools.work.gd/json-formatter</loc></url>
-  <url><loc>https://devtools.work.gd/json-validator</loc></url>
-  <url><loc>https://devtools.work.gd/json-minifier</loc></url>
-  <url><loc>https://devtools.work.gd/json-diff</loc></url>
-  <url><loc>https://devtools.work.gd/json-to-csv</loc></url>
-  <url><loc>https://devtools.work.gd/json-to-yaml</loc></url>
-  <url><loc>https://devtools.work.gd/json-sorter</loc></url>
-  <url><loc>https://devtools.work.gd/json-to-typescript</loc></url>
-  <url><loc>https://devtools.work.gd/json-schema-generator</loc></url>
-  <url><loc>https://devtools.work.gd/jwt-decoder</loc></url>
-  <url><loc>https://devtools.work.gd/base64</loc></url>
-  <url><loc>https://devtools.work.gd/about</loc></url>
-  <url><loc>https://devtools.work.gd/privacy</loc></url>
-  <url><loc>https://devtools.work.gd/contact</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-formatter</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-validator</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-minifier</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-diff</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-to-csv</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-to-yaml</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-sorter</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-to-typescript</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/json-schema-generator</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/jwt-decoder</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/base64</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/about</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/privacy</loc></url>
+  <url><loc>https://negiakshat.github.io/devtools/contact</loc></url>
 </urlset>

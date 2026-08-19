@@ -55,12 +55,21 @@ export function requestOrigin(protocol: string, host: string, forwardedProtocol?
   return `${scheme}://${host}`;
 }
 
+function urlForRoute(origin: string, route: string) {
+  const url = new URL(origin);
+  const basePath = url.pathname.replace(/\/+$/, "");
+  const routePath = route.replace(/^\/+/, "");
+
+  url.pathname = routePath ? `${basePath}/${routePath}` : `${basePath || ""}/`;
+  return url.toString();
+}
+
 export function robotsTxt(origin: string) {
-  return `User-agent: *\nAllow: /\n\nSitemap: ${new URL("/sitemap.xml", origin).toString()}\n`;
+  return `User-agent: *\nAllow: /\n\nSitemap: ${urlForRoute(origin, "sitemap.xml")}\n`;
 }
 
 export function sitemapXml(origin: string) {
-  const urls = publicRoutes.map((route) => `  <url><loc>${new URL(route, origin).toString()}</loc></url>`).join("\n");
+  const urls = publicRoutes.map((route) => `  <url><loc>${urlForRoute(origin, route)}</loc></url>`).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
@@ -74,8 +83,8 @@ function serializeSchema(value: Record<string, unknown>) {
 
 export function renderRouteSeo(html: string, origin: string, path: string) {
   const seo = routeSeo(path);
-  const canonical = new URL(seo.path, origin).toString();
-  const site = new URL("/", origin).toString();
+  const canonical = urlForRoute(origin, seo.path);
+  const site = urlForRoute(origin, "/");
   const schema = seo.schemaType === "WebApplication"
     ? { "@context": "https://schema.org", "@type": "WebApplication", name: seo.toolName, description: seo.description, applicationCategory: "DeveloperApplication", operatingSystem: "Any", url: canonical, isAccessibleForFree: true, isPartOf: { "@type": "WebSite", name: "Developer Tools", url: site } }
     : { "@context": "https://schema.org", "@type": seo.schemaType, name: seo.title, description: seo.description, url: canonical, ...(seo.schemaType === "WebSite" ? {} : { isPartOf: { "@type": "WebSite", name: "Developer Tools", url: site } }) };

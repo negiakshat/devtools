@@ -13,7 +13,7 @@ const projectRoot = path.resolve(
   ".."
 );
 const outputDir = path.join(projectRoot, "dist", "public");
-const canonicalOrigin = "https://devtools.work.gd";
+const canonicalOrigin = "https://negiakshat.github.io/devtools";
 
 function outputFileForRoute(route: string) {
   return route === "/"
