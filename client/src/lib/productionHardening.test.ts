@@ -23,4 +23,13 @@ describe("production hardening", () => {
     expect(sitemap).toContain(`${expectedHost}/json-formatter`);
     expect(sitemap).not.toContain("https://devtools.manus.space");
   });
+
+  it("keeps PWA manifest paths compatible with static subpath hosting", () => {
+    const manifest = readProjectFile("client/public/manifest.webmanifest");
+
+    expect(manifest).toContain('"start_url": "./"');
+    expect(manifest).toContain('"src": "favicon.svg"');
+    expect(manifest).not.toContain('"start_url": "/"');
+    expect(manifest).not.toContain('"src": "/favicon.svg"');
+  });
 });

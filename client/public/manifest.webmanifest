@@ -2,9 +2,9 @@
   "name": "Developer Tools",
   "short_name": "DevTools",
   "description": "Free local-first utilities for developer data.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#090d0c",
   "theme_color": "#090d0c",
-  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }
