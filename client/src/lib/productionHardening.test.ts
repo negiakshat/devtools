@@ -18,10 +18,16 @@ describe("production hardening", () => {
     const expectedHost = "https://negiakshat.github.io/devtools";
     const robots = readProjectFile("client/public/robots.txt");
     const sitemap = readProjectFile("client/public/sitemap.xml");
+    const prerenderer = readProjectFile("scripts/prerender-static.ts");
+    const documentHead = readProjectFile("client/src/components/DocumentHead.tsx");
+    const netlifyConfig = readProjectFile("netlify.toml");
 
     expect(robots).toContain(`${expectedHost}/sitemap.xml`);
     expect(sitemap).toContain(`${expectedHost}/json-formatter`);
     expect(sitemap).not.toContain("https://devtools.manus.space");
+    expect(prerenderer).toContain("process.env.VITE_SITE_ORIGIN");
+    expect(documentHead).toContain("import.meta.env.VITE_SITE_ORIGIN");
+    expect(netlifyConfig).toContain('VITE_SITE_ORIGIN = "https://rundevtools.netlify.app"');
   });
 
   it("keeps PWA manifest paths compatible with static subpath hosting", () => {

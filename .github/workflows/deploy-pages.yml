@@ -42,6 +42,7 @@ jobs:
         run: pnpm run build
         env:
           VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          VITE_SITE_ORIGIN: https://negiakshat.github.io/devtools
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -9,7 +9,9 @@ export type PageMetadata = {
   robots?: "index, follow" | "noindex, nofollow";
 };
 
-const CANONICAL_ORIGIN = "https://negiakshat.github.io/devtools";
+const CANONICAL_ORIGIN = (
+  import.meta.env.VITE_SITE_ORIGIN || "https://negiakshat.github.io/devtools"
+).replace(/\/+$/, "");
 
 function canonicalUrlForPath(path: string) {
   const url = new URL(CANONICAL_ORIGIN);
