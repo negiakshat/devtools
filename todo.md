@@ -164,3 +164,10 @@
 
 - [x] Confirm the existing GitHub Actions deployment workflow succeeds after Pages activation and verify the published static site at its project URL.
 - [x] Remove the unnecessary GitHub Pages requirement for unavailable public analytics build variables without sending developer-tool input to external services.
+
+# Netlify Static Deployment Checklist
+
+- [x] Identify the verified static build command and the directory containing the deployable production `index.html`.
+- [x] Add repository-owned Netlify build and publish configuration for automatic deployments from GitHub `main`.
+- [ ] Commit and push the Netlify configuration to GitHub `main` so the connected site can deploy it automatically.
+- [ ] Verify the live Netlify root, crawler assets, and direct static routes after the deployment completes.
