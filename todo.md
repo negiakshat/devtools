@@ -170,6 +170,6 @@
 - [x] Identify the verified static build command and the directory containing the deployable production `index.html`.
 - [x] Add repository-owned Netlify build and publish configuration for automatic deployments from GitHub `main`.
 - [x] Commit and push the Netlify configuration to GitHub `main` so the connected site can deploy it automatically.
-- [ ] Verify the live Netlify root, crawler assets, and direct static routes after the deployment completes.
+- [x] Verify the live Netlify root, crawler assets, and direct static routes after the deployment completes.
 - [x] Configure Netlify’s static build to generate canonical, robots, sitemap, Open Graph, and JSON-LD URLs for the live Netlify origin while retaining the GitHub Pages target configuration.
-- [ ] Push the validated multi-host static metadata correction to GitHub `main` and confirm Netlify receives the build.
+- [x] Push the validated multi-host static metadata correction to GitHub `main` and confirm Netlify receives the build.
