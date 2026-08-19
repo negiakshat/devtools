@@ -183,3 +183,11 @@
 - [x] Inspect HTTPS, mixed-content, route duplication, client-bundle exposure, and production build/test status.
 - [x] Apply and push only confirmed indexing-readiness fixes, then re-verify the live Netlify release.
 - [x] Align static canonical, sitemap, Open Graph, Twitter, and JSON-LD URLs with Netlify’s trailing-slash directory URLs so sitemap entries return HTTP 200 without redirects.
+
+# Custom Domain Ownership Guidance
+
+- [x] Explain lawful alternatives for publishing on a custom domain when the requested work.gd namespace is controlled by another Netlify DNS team.
+
+# Google Search Console Verification File
+
+- [ ] Publish the supplied Google Search Console HTML verification file at the static site root and confirm its live Netlify URL before the user verifies ownership.
