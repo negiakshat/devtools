@@ -32,4 +32,14 @@ describe("production hardening", () => {
     expect(manifest).not.toContain('"start_url": "/"');
     expect(manifest).not.toContain('"src": "/favicon.svg"');
   });
+
+  it("does not require external analytics configuration for a static Pages deployment", () => {
+    const html = readProjectFile("client/index.html");
+    const workflow = readProjectFile(".github/workflows/deploy-pages.yml");
+
+    expect(html).not.toContain("VITE_ANALYTICS_");
+    expect(html).not.toContain("/umami");
+    expect(workflow).not.toContain("VITE_ANALYTICS_");
+    expect(workflow).not.toContain("Verify public analytics build variables");
+  });
 });

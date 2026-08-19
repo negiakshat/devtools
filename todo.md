@@ -159,3 +159,8 @@
 
 - [x] Remove the retired custom-domain string from static canonical metadata, crawler assets, and their regression coverage while preserving the `/devtools` GitHub Pages subpath.
 - [x] Validate the static build, type check, and regression suite before pushing the cleanup to GitHub main.
+
+# GitHub Pages Activation Verification Checklist
+
+- [ ] Confirm the existing GitHub Actions deployment workflow succeeds after Pages activation and verify the published static site at its project URL.
+- [x] Remove the unnecessary GitHub Pages requirement for unavailable public analytics build variables without sending developer-tool input to external services.

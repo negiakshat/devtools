@@ -38,19 +38,10 @@ jobs:
           enablement: true
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Verify public analytics build variables
-        env:
-          VITE_ANALYTICS_ENDPOINT: ${{ vars.VITE_ANALYTICS_ENDPOINT }}
-          VITE_ANALYTICS_WEBSITE_ID: ${{ vars.VITE_ANALYTICS_WEBSITE_ID }}
-        run: |
-          test -n "$VITE_ANALYTICS_ENDPOINT"
-          test -n "$VITE_ANALYTICS_WEBSITE_ID"
       - name: Build static site
         run: pnpm run build
         env:
           VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
-          VITE_ANALYTICS_ENDPOINT: ${{ vars.VITE_ANALYTICS_ENDPOINT }}
-          VITE_ANALYTICS_WEBSITE_ID: ${{ vars.VITE_ANALYTICS_WEBSITE_ID }}
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
