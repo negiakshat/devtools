@@ -22,7 +22,7 @@ describe("production SEO metadata", () => {
   it("renders unique formatter metadata in the initial HTML response", () => {
     const html = renderRouteSeo(shell, "https://devtools-gfrrrosv.manus.space", "/json-formatter");
     expect(html).toContain("JSON Formatter — Format and Validate JSON Locally | Developer Tools");
-    expect(html).toContain('rel="canonical" href="https://devtools-gfrrrosv.manus.space/json-formatter"');
+    expect(html).toContain('rel="canonical" href="https://devtools-gfrrrosv.manus.space/json-formatter/"');
     expect(html).toContain('name="robots" content="index, follow"');
     expect(html).toContain('"@type":"WebApplication"');
     expect(html).toContain('<h1>JSON Formatter</h1>');
@@ -46,7 +46,17 @@ describe("production SEO metadata", () => {
     expect(robotsTxt(origin)).toContain("Sitemap: https://devtools-gfrrrosv.manus.space/sitemap.xml");
     const sitemap = sitemapXml(origin);
     expect(sitemap.match(/<loc>/g)).toHaveLength(publicRoutes.length);
-    expect(sitemap).toContain("https://devtools-gfrrrosv.manus.space/json-formatter");
+    expect(sitemap).toContain("https://devtools-gfrrrosv.manus.space/json-formatter/");
     expect(sitemap).not.toContain("not-a-tool");
+  });
+
+  it("uses directory URLs for indexable static pages while keeping crawler files exact", () => {
+    const origin = "https://rundevtools.netlify.app";
+    const html = renderRouteSeo(shell, origin, "/json-formatter");
+    const sitemap = sitemapXml(origin);
+
+    expect(html).toContain('rel="canonical" href="https://rundevtools.netlify.app/json-formatter/"');
+    expect(sitemap).toContain("https://rundevtools.netlify.app/json-formatter/");
+    expect(robotsTxt(origin)).toContain("Sitemap: https://rundevtools.netlify.app/sitemap.xml");
   });
 });

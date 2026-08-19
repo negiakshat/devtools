@@ -17,8 +17,11 @@ function canonicalUrlForPath(path: string) {
   const url = new URL(CANONICAL_ORIGIN);
   const basePath = url.pathname.replace(/\/+$/, "");
   const routePath = path.replace(/^\/+/, "");
+  const isIndexableRoute = routePath !== "404" && !routePath.includes(".");
 
-  url.pathname = routePath ? `${basePath}/${routePath}` : `${basePath || ""}/`;
+  url.pathname = routePath
+    ? `${basePath}/${routePath}${isIndexableRoute ? "/" : ""}`
+    : `${basePath || ""}/`;
   return url.toString();
 }
 

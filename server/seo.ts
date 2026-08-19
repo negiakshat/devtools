@@ -59,8 +59,11 @@ function urlForRoute(origin: string, route: string) {
   const url = new URL(origin);
   const basePath = url.pathname.replace(/\/+$/, "");
   const routePath = route.replace(/^\/+/, "");
+  const isIndexableRoute = publicRoutes.includes(route as (typeof publicRoutes)[number]);
 
-  url.pathname = routePath ? `${basePath}/${routePath}` : `${basePath || ""}/`;
+  url.pathname = routePath
+    ? `${basePath}/${routePath}${isIndexableRoute ? "/" : ""}`
+    : `${basePath || ""}/`;
   return url.toString();
 }
 
