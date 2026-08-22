@@ -44,6 +44,9 @@ export interface ToolDefinition {
   outputLabel: string;
   help: {
     what: string;
+    steps: [string, string, string];
+    bestFor: string;
+    caution: string;
     useCases: string[];
     faqs: Array<{ question: string; answer: string }>;
   };
@@ -64,6 +67,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Formatted JSON",
     help: {
       what: "Formats valid JSON into an easy-to-read structure with the indentation you choose. Processing stays in your browser.",
+      steps: ["Paste a JSON document or load the example.", "Choose two spaces, four spaces, or tabs for indentation.", "Run Format JSON, then copy or download the readable result."],
+      bestFor: "Inspecting API responses, configuration files, and review diffs that are hard to read in one line.",
+      caution: "This accepts strict JSON; comments, trailing commas, and single-quoted strings are not valid JSON.",
       useCases: ["Inspect API responses", "Clean configuration files", "Prepare JSON for code review"],
       faqs: [
         { question: "Is my JSON uploaded?", answer: "No. This formatter performs its deterministic transformation in your browser." },
@@ -85,6 +91,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Validated preview",
     help: {
       what: "Checks JSON syntax, highlights an approximate location when parsing fails, and gives you a normalized preview when it succeeds.",
+      steps: ["Paste the exact JSON payload or file content you want to check.", "Run Validate JSON to receive a success state or syntax diagnostic.", "Fix the reported area and validate again before using the data."],
+      bestFor: "Checking request bodies, exported data, and configuration before they reach an API or build process.",
+      caution: "Syntax validation does not prove that a document meets a particular API contract or business rule.",
       useCases: ["Check request payloads", "Debug configuration data", "Validate exported API data"],
       faqs: [
         { question: "Does valid JSON mean my schema is correct?", answer: "No. It confirms syntax only; values can still be structurally unsuitable for a particular API or schema." },
@@ -106,6 +115,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Minified JSON",
     help: {
       what: "Removes insignificant whitespace from valid JSON using the browser’s parser, preserving keys, values, and structure.",
+      steps: ["Paste valid JSON or load the example.", "Run Minify JSON to parse and compact the document.", "Copy or download the compact result when a one-line payload is useful."],
+      bestFor: "Reducing whitespace in fixtures, inline JSON values, and already-valid request payloads.",
+      caution: "Minifying changes presentation, not semantics; use a formatter again when humans need to review the result.",
       useCases: ["Reduce request payload size", "Compact fixture files", "Prepare inline JSON values"],
       faqs: [
         { question: "Will it change string values?", answer: "No. String content is parsed first and then serialized safely." },
@@ -127,6 +139,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Structural changes",
     help: {
       what: "Parses each side independently, then compares object keys and array positions to show added, removed, and changed values.",
+      steps: ["Paste the earlier document on the left and the later document on the right.", "Run Compare JSON to generate the structural summary.", "Review additions, removals, and changed paths before sharing the result."],
+      bestFor: "Reviewing response changes, comparing environment configuration, and tracing a JSON transformation.",
+      caution: "Object keys are compared by name, while arrays are compared by index rather than by a business identifier.",
       useCases: ["Review API response changes", "Compare environment configuration", "Debug JSON transformations"],
       faqs: [
         { question: "Are keys compared by position?", answer: "Object keys are compared by name. Array elements are compared by their index." },
@@ -148,6 +163,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "CSV preview",
     help: {
       what: "Converts an array of JSON objects to CSV. Nested object properties become dot-separated columns; nested arrays are stored as JSON cells.",
+      steps: ["Paste JSON, ideally an array of similarly shaped objects.", "Run Convert to CSV to preview inferred columns and rows.", "Copy the result or download a CSV file for a spreadsheet or analysis tool."],
+      bestFor: "Turning API records or fixtures into a spreadsheet-friendly table without silently dropping nested values.",
+      caution: "Nested arrays remain encoded in a single CSV cell, so they may need separate handling in a spreadsheet.",
       useCases: ["Open API data in a spreadsheet", "Export fixtures for analysis", "Create quick tabular reports"],
       faqs: [
         { question: "What JSON structures work best?", answer: "An array of objects produces the clearest table. Primitive arrays and single objects are supported as a single value or row." },
@@ -169,6 +187,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "YAML output",
     help: {
       what: "Parses JSON first and then serializes its values into readable YAML. Keys and quoted strings are preserved safely where practical.",
+      steps: ["Paste valid JSON or load the example.", "Run Convert to YAML to create a YAML representation.", "Review quoted values, then copy or download the generated file."],
+      bestFor: "Making JSON fixtures or nested configuration easier to read in YAML-oriented workflows.",
+      caution: "The output covers JSON-compatible YAML only; it does not invent YAML anchors, tags, or custom types.",
       useCases: ["Create readable config files", "Move JSON fixtures into YAML", "Inspect nested data structures"],
       faqs: [
         { question: "Can every YAML document be represented?", answer: "This conversion emits a pragmatic YAML subset for JSON-compatible data; JSON has no anchors, tags, or custom YAML types." },
@@ -190,6 +211,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Sorted JSON",
     help: {
       what: "Recursively orders object keys in valid JSON for cleaner reviews, stable fixtures, and easier structural comparison. Array item order is preserved.",
+      steps: ["Paste valid JSON and choose ascending or descending key order.", "Optionally enable case-insensitive sorting for mixed-case keys.", "Run Sort keys, then copy or download the normalized output."],
+      bestFor: "Removing key-order noise from configuration, snapshots, and JSON comparisons.",
+      caution: "Array order is preserved because reordering array items could change application behavior.",
       useCases: ["Normalize configuration files", "Prepare JSON before comparing", "Reduce ordering noise in snapshots"],
       faqs: [
         { question: "Does sorting change my data?", answer: "Object key order changes, but keys, values, types, and array positions remain intact. JSON object member order is not semantically meaningful." },
@@ -211,6 +235,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "TypeScript declarations",
     help: {
       what: "Uses one valid JSON sample to infer readable TypeScript declarations for primitives, nested objects, and arrays. Processing stays in your browser.",
+      steps: ["Paste a representative JSON sample from the data shape you model.", "Run Generate TypeScript to infer declarations.", "Review field names and optionality before copying or downloading the .ts output."],
+      bestFor: "Scaffolding frontend models, typed fixtures, and an initial API-response contract from sample data.",
+      caution: "One sample cannot reveal every optional field, union value, or server-side validation rule.",
       useCases: ["Scaffold API response models", "Type frontend fixtures", "Start a client contract from sample data"],
       faqs: [
         { question: "Are the generated fields always required?", answer: "The output reflects fields observed in the supplied sample. Review optionality and domain constraints before using it as a production API contract." },
@@ -232,6 +259,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Generated JSON Schema",
     help: {
       what: "Infers a practical Draft 2020-12 schema from one JSON example, describing observed value types, object properties, required policy, and array item structure.",
+      steps: ["Paste a representative valid JSON example.", "Choose the observed required-field policy and run Generate schema.", "Review the draft before copying or downloading it as a validation baseline."],
+      bestFor: "Starting an API-validation contract or documenting a known response shape from real fixture data.",
+      caution: "An inferred schema describes what the sample shows; it does not prove every permitted value or rule in an API.",
       useCases: ["Start API validation contracts", "Document a response shape", "Create a schema baseline for fixtures"],
       faqs: [
         { question: "Does a generated schema fully describe my API?", answer: "No. A single sample can show observed structure, but it cannot prove every allowed value, optional field, or business rule. Review the generated schema before relying on it." },
@@ -253,6 +283,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Decoded token",
     help: {
       what: "Splits a JWT into its three segments and decodes the header and payload from Base64URL in your browser.",
+      steps: ["Paste a complete three-part JSON Web Token.", "Run Decode JWT to inspect decoded header, claims, and timestamps.", "Check issuer, audience, and expiry with your trusted authentication system."],
+      bestFor: "Debugging token claims and expiry in a client-side authentication flow without sending a token to a service.",
+      caution: "Decoding a token is not signature verification and does not establish that the token is authentic or safe to trust.",
       useCases: ["Inspect token claims", "Check expiration timestamps", "Debug client-side authentication flows"],
       faqs: [
         { question: "Does decoding verify the token?", answer: "No. Anyone can decode a JWT payload. Trust requires signature verification against a known key and issuer." },
@@ -274,6 +307,9 @@ export const tools: ToolDefinition[] = [
     outputLabel: "Conversion output",
     help: {
       what: "Converts UTF-8 text to Base64 or decodes standard and URL-safe Base64. Each transformation runs directly in your browser.",
+      steps: ["Choose whether to encode text or decode Base64 input.", "Paste the source value or load an example.", "Run conversion, then copy or download the resulting text."],
+      bestFor: "Inspecting encoded values, preparing test data, and decoding URL-safe token fragments.",
+      caution: "Base64 is an encoding format, not encryption; do not treat encoded text as protected data.",
       useCases: ["Inspect encoded values", "Create Base64 test data", "Decode URL-safe token fragments"],
       faqs: [
         { question: "Is Base64 encryption?", answer: "No. Base64 is an encoding; it does not protect the underlying content." },

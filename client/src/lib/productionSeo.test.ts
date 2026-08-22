@@ -27,6 +27,18 @@ describe("production SEO metadata", () => {
     expect(html).toContain('"@type":"WebApplication"');
     expect(html).toContain('<h1>JSON Formatter</h1>');
     expect(html).toContain('data-devtools-schema="true"');
+    expect(html).toContain('"@type":"FAQPage"');
+    expect(html).toContain('"name":"Is my JSON uploaded?"');
+    expect(html).toContain("JSON Formatter FAQs");
+  });
+
+  it("emits an FAQ schema only for implemented tool routes with matching visible questions", () => {
+    const toolHtml = renderRouteSeo(shell, "https://rundevtools.netlify.app", "/jwt-decoder");
+    const pageHtml = renderRouteSeo(shell, "https://rundevtools.netlify.app", "/about");
+
+    expect(toolHtml).toContain('"@type":"FAQPage"');
+    expect(toolHtml).toContain('"name":"Does decoding verify the token?"');
+    expect(pageHtml).not.toContain('"@type":"FAQPage"');
   });
 
   it("keeps not-found pages non-indexable", () => {

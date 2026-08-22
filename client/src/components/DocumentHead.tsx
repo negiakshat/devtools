@@ -46,6 +46,29 @@ function upsertStructuredData(data: Record<string, unknown>) {
   element.text = JSON.stringify(data);
 }
 
+function structuredDataForTool(tool: ToolDefinition, canonicalUrl: string, siteUrl: string) {
+  const application = {
+    "@type": "WebApplication",
+    name: tool.name,
+    description: tool.seoDescription,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    url: canonicalUrl,
+    isAccessibleForFree: true,
+    isPartOf: { "@type": "WebSite", name: "Developer Tools", url: siteUrl },
+  };
+  const faq = {
+    "@type": "FAQPage",
+    mainEntity: tool.help.faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
+  return { "@context": "https://schema.org", "@graph": [application, faq] };
+}
+
 // Precision Console: every route declares a clear intent, canonical URL, and small truthful schema payload.
 export default function DocumentHead({ tool, page }: { tool?: ToolDefinition; page?: PageMetadata }) {
   useEffect(() => {
@@ -72,17 +95,7 @@ export default function DocumentHead({ tool, page }: { tool?: ToolDefinition; pa
       document.head.appendChild(canonical);
     }
     canonical.href = canonicalUrl;
-    upsertStructuredData(tool ? {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: tool.name,
-      description: tool.seoDescription,
-      applicationCategory: "DeveloperApplication",
-      operatingSystem: "Any",
-      url: canonicalUrl,
-      isAccessibleForFree: true,
-      isPartOf: { "@type": "WebSite", name: "Developer Tools", url: siteUrl },
-    } : page ? {
+    upsertStructuredData(tool ? structuredDataForTool(tool, canonicalUrl, siteUrl) : page ? {
       "@context": "https://schema.org",
       "@type": page.type ?? "WebPage",
       name: title,

@@ -191,3 +191,11 @@
 # Google Search Console Verification File
 
 - [ ] Publish the supplied Google Search Console HTML verification file at the static site root and confirm its live Netlify URL before the user verifies ownership.
+
+# Heavy SEO Execution — RunDevTools
+
+- [x] Audit all 15 public routes, their initial HTML, metadata, content depth, structured data, internal links, and live Netlify behavior.
+- [x] Research search intent and relevant competitor patterns for the implemented developer utilities without copying or keyword stuffing.
+- [x] Implement original tool-specific supporting content, natural topical internal links, unique metadata refinements, and truthful visible FAQ/schema improvements where justified.
+- [x] Validate static output, every public route/tool, structured data, crawler assets, 404 behavior, accessibility, and production performance signals.
+- [ ] Commit the verified changes to GitHub main and confirm the live Netlify deployment contains the SEO improvements.
